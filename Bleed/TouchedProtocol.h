@@ -8,6 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TouchedProtocol : NSObject
+
+@protocol TouchedProtocolDelegate <NSObject>
+
+@required
+-(void)tapEvent;
+@end
+
+@interface TouchedProtocol : NSObject {
+    
+    id<TouchedProtocolDelegate> delegate;
+}
+
+@property (nonatomic, assign) id delegate;
+
+- (void)tapEvent;
+
 
 @end

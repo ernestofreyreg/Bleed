@@ -10,4 +10,8 @@
 
 @interface TwoStateImageButton : UIView
 
+-(id)initWithFrame:(CGRect)frame image:(UIImage*)image label:(NSString*)label;
+//-(void)tapDetected;
+- (void)display;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "MyDropsViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MyDropsViewController ()
 
@@ -14,11 +15,13 @@
 
 @implementation MyDropsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithTitle:@"My Drops"];
     if (self) {
-        // Custom initialization
+        
+        
+        
     }
     return self;
 }
@@ -26,13 +29,42 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self.view setMultipleTouchEnabled:YES];
+
 }
+
+-(NSString*)leftButton
+{
+    return @"Back";
+}
+
+-(NSString*)rightButton
+{
+    return @"Add";
+}
+
+-(void)leftButtonTouched:(UIButton *)sender
+{
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+-(void)rightButtonTouched:(UIButton *)sender
+{
+    
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+
+    
+    NSLog(@"Touch");
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

@@ -14,11 +14,12 @@
 
 @implementation DiaryViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithTitle:@"Diary"];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -34,5 +35,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+-(NSString*)leftButton
+{
+    return @"Back";
+}
+
+
+-(void)leftButtonTouched:(UIButton *)sender
+{
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
 
 @end

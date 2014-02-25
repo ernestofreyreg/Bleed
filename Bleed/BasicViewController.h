@@ -10,4 +10,10 @@
 
 @interface BasicViewController : UIViewController
 
+- (id)initWithTitle:(NSString *)title;
+- (NSString*)leftButton;
+- (NSString*)rightButton;
+- (void)leftButtonTouched:(UIButton *)sender;
+- (void)rightButtonTouched:(UIButton *)sender;
+
 @end

@@ -10,4 +10,7 @@
 
 @interface TextEditField : UIView
 
+-(id)initWithFrame:(CGRect)frame label:(NSString*)label value:(NSString*)value placeholder:(NSString*)placeholder;
+-(NSString*)getEntry;
+
 @end

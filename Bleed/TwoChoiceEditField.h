@@ -10,4 +10,8 @@
 
 @interface TwoChoiceEditField : UIView
 
+-(id)initWithFrame:(CGRect)frame label:(NSString*)label value:(NSString*)value choices:(NSArray*)choices;
+-(NSString*)getEntry;
+-(void)tapDetected;
+
 @end
