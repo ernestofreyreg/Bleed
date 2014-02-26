@@ -10,11 +10,13 @@
 #import "ProfileViewController.h"
 #import "DiaryViewController.h"
 #import "MyDropsViewController.h"
+#import "BleedService.h"
 
 @interface ViewController ()
 
 @property UILabel *labelUsername;
 @property UIImageView *userImage;
+@property BleedService *service;
 
 @end
 
@@ -110,12 +112,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-        
+    
+    
     // Load User profile and show it on center screen
     
     
     // Check if BLE service is working
-    
+    _service = [[BleedService alloc] init];
+    [_service advertise];
     
     // Show statuses of BLE
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		882B2E7618BD5AB500479829 /* BleedService.m in Sources */ = {isa = PBXBuildFile; fileRef = 882B2E7518BD5AB500479829 /* BleedService.m */; };
 		884DFB7018BAB43E001389F1 /* MyDropsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884DFB6F18BAB43E001389F1 /* MyDropsViewController.m */; };
 		884DFB7318BAB4C6001389F1 /* DiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884DFB7218BAB4C6001389F1 /* DiaryViewController.m */; };
 		884DFB7518BADF55001389F1 /* takepicture.png in Resources */ = {isa = PBXBuildFile; fileRef = 884DFB7418BADF55001389F1 /* takepicture.png */; };
@@ -57,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		882B2E7418BD5AB500479829 /* BleedService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleedService.h; sourceTree = "<group>"; };
+		882B2E7518BD5AB500479829 /* BleedService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BleedService.m; sourceTree = "<group>"; };
 		884DFB6E18BAB43E001389F1 /* MyDropsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDropsViewController.h; sourceTree = "<group>"; };
 		884DFB6F18BAB43E001389F1 /* MyDropsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDropsViewController.m; sourceTree = "<group>"; };
 		884DFB7118BAB4C6001389F1 /* DiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryViewController.h; sourceTree = "<group>"; };
@@ -200,6 +203,8 @@
 				884DFB8018BB0E38001389F1 /* PaddingView.m */,
 				8868F54518BC24E100780D9B /* TouchedProtocol.h */,
 				8868F54618BC24E100780D9B /* TouchedProtocol.m */,
+				882B2E7418BD5AB500479829 /* BleedService.h */,
+				882B2E7518BD5AB500479829 /* BleedService.m */,
 			);
 			path = Bleed;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 				8894171618B725D800A01620 /* TwoChoiceEditField.m in Sources */,
 				884DFB7018BAB43E001389F1 /* MyDropsViewController.m in Sources */,
 				884DFB7318BAB4C6001389F1 /* DiaryViewController.m in Sources */,
+				882B2E7618BD5AB500479829 /* BleedService.m in Sources */,
 				8894170E18B6CA8500A01620 /* TextEditField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
