@@ -16,7 +16,6 @@
 
 @property UILabel *labelUsername;
 @property UIImageView *userImage;
-@property BleedService *service;
 
 @end
 
@@ -118,9 +117,7 @@
     
     
     // Check if BLE service is working
-    _service = [[BleedService alloc] init];
-    [_service advertise];
-    
+            
     // Show statuses of BLE
     
     

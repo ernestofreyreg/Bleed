@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 
-@interface BleedService : NSObject
+@interface BleedService : NSObject <CBPeripheralManagerDelegate>
 
 -(void)setupService;
--(void)advertise;
+
 
 @end

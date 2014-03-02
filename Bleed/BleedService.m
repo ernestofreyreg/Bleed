@@ -19,8 +19,6 @@
 
 @implementation BleedService
 
-
-
 -(id)init
 {
     self = [super init];
@@ -34,11 +32,12 @@
 {
     switch (peripheral.state) {
         case CBPeripheralManagerStatePoweredOn:
+            NSLog(@"CBPeripheralManager power on");
             [self setupService];
             break;
             
         default:
-            NSLog(@"CBPeripheralManager changed state");
+            NSLog(@"CBPeripheralManager changed state %d", peripheral.state);
             break;
     }
 }
@@ -51,7 +50,7 @@
     CBUUID * bleedServiceUUID = [CBUUID UUIDWithString:kBleedServiceUUIDString];
     CBUUID * bleedCharacteristicUUID = [CBUUID UUIDWithString:kBleedCharacteristicUUIDString];
     
-    bleedCharacteristic = [[CBMutableCharacteristic alloc] initWithType:bleedCharacteristicUUID properties:CBCharacteristicPropertyRead value:nil permissions:0];
+    bleedCharacteristic = [[CBMutableCharacteristic alloc] initWithType:bleedCharacteristicUUID properties:CBCharacteristicPropertyRead value:nil permissions:CBAttributePermissionsReadable];
     
     bleedService = [[CBMutableService alloc] initWithType:bleedServiceUUID primary:YES];
     
@@ -60,18 +59,7 @@
     [manager addService:bleedService];
 }
 
--(void)advertise
-{
-    NSString * kBleedServiceUUIDString = @"1C39E049-0478-438A-A264-C5CF8BFA84B3";
-    
-    CBUUID *bleedServiceUUID = [CBUUID UUIDWithString:kBleedServiceUUIDString];
-    
-    NSArray * services = [NSArray arrayWithObject:bleedServiceUUID];
-    
-    NSDictionary *advertisingDict = [NSDictionary dictionaryWithObject:services forKey:CBAdvertisementDataServiceUUIDsKey];
-    
-    [manager startAdvertising:advertisingDict];
-}
+
 
 -(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic
 {
@@ -82,9 +70,40 @@
     
     NSData *eom = [@"ENVAL" dataUsingEncoding:NSUTF8StringEncoding];
     [manager updateValue:eom forCharacteristic:bleedCharacteristic onSubscribedCentrals:nil];
-    
-    
 }
+
+- (void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error{
+    NSLog(@"Added Service");
+    NSString * kBleedServiceUUIDString = @"1C39E049-0478-438A-A264-C5CF8BFA84B3";
+    
+    NSDictionary *advertisingData = @{CBAdvertisementDataLocalNameKey : @"BleedApp", CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:kBleedServiceUUIDString]]};
+    
+    [peripheral startAdvertising:advertisingData];
+}
+
+
+
+- (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error{
+    NSLog(@"Started advertising");
+}
+
+-(void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request
+{
+    NSLog(@"Read request");
+    request.value = [@"Hola" dataUsingEncoding:NSUTF8StringEncoding];
+    [manager respondToRequest:request withResult:CBATTErrorSuccess];
+}
+
+-(void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray *)requests
+{
+    NSLog(@"Write request");
+}
+
+//-(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic
+//{
+//    NSLog(@"Subscribed to Characteristic");
+//}
+
 
 
 
